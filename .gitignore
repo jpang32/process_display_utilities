@@ -3,3 +3,6 @@ pdu/
 
 # sample data
 sample_data/
+
+# connection file
+mongo_connect.py
