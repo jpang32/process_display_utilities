@@ -6,3 +6,6 @@ sample_data/
 
 # connection file
 mongo_connect.py
+
+#artifacts
+__pycache__/
