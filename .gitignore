@@ -6,6 +6,8 @@ sample_data/
 
 # connection file
 mongo_connect.py
+# output from stream background process
+nohup.out
 
 #artifacts
 __pycache__/
