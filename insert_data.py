@@ -1,3 +1,7 @@
+"""
+    Inserts small data pieces created by sample_timeseries_data.py
+"""
+
 from mongo_connect import Connect
 from pymongo import MongoClient
 import json

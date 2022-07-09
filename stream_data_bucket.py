@@ -1,3 +1,17 @@
+"""
+Pushes bucket data about cpu usage of process_name.
+
+This script runs a terminal command to grab cpu data
+about the process name defined by the user. This data
+is pushed every one minute while the script runs and
+is bucketized by day in a mongodb collection. 
+
+This script should be run in the background for as
+long as you would like data on the processes
+running on your local computer.
+"""
+
+
 from mongo_connect import Connect
 import subprocess
 from datetime import datetime
@@ -17,16 +31,18 @@ while True:
     result = subprocess.run(f'ps aux | grep {process_name}', shell=True, stdout=subprocess.PIPE)
     result = result.stdout.decode('utf-8').split('\n')[0].split()
 
-    dt = (datetime.now()).strftime('%m/%d/%Y') 
-    dt = datetime.strptime(dt, '%m/%d/%Y')
+    dt_id = (datetime.now()).strftime('%m/%d/%Y') 
+    dt_id = datetime.strptime(dt_id, '%m/%d/%Y')
+
+    dt = datetime.now()
 
     upsert_result = db['cpu-data-buckets'].update_one(
         {
-            '_id': dt,
+            '_id': dt_id,
         },
         {
             '$setOnInsert': {
-                '_id': dt,
+                '_id': dt_id,
                 'count': 0,
                 'items': []
             }
@@ -39,7 +55,7 @@ while True:
 
     update_result = db['cpu-data-buckets'].update_one(
         {
-            '_id': dt
+            '_id': dt_id
         },
         {
             '$push': {

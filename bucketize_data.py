@@ -1,3 +1,12 @@
+"""
+    Takes non-bucketized data about cpu usage and buckets it
+    by day.
+
+    If stream data is ever run and stores non-bucketized data
+    to mongodb, this script can be run to bucketize it by day,
+    similar to how data is streamed from stream_data_bucket.py.
+"""
+
 from itertools import groupby
 from mongo_connect import Connect
 from pymongo import MongoClient

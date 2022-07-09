@@ -1,3 +1,14 @@
+"""
+    Legacy script. Used to collect (non-bucketized) cpu data
+    about local processes.
+
+    Similar to the stream_data_bucket file, this file sends
+    data to mongodb about cpu usage of a process_name, but the data
+    is not bucketized. This script is a legacy and was refactored
+    to create stream_data_bucket.py so that querying and viewing of
+    data is more sufficient and user-friendly.
+"""
+
 from mongo_connect import Connect
 import subprocess
 import datetime

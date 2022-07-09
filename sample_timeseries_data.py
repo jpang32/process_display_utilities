@@ -1,3 +1,9 @@
+"""
+	Creates a small (non-bucketized) collection of 
+	sample documents that will be pushed to mongodb 
+	when insert_data is run.
+"""
+
 import subprocess
 from datetime import timezone
 import datetime
